@@ -23,6 +23,7 @@ public class ConsoleServer {
 
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -38,21 +39,21 @@ public class ConsoleServer {
                             }
                             System.out.println("Сообщение от клиента: " + str);
                         }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } finally {
-                        try {
-                            socket.close();
                         } catch (IOException e) {
                             e.printStackTrace();
-                        }
-                        try {
-                            server.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        } finally {
+                            try {
+                                socket.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            try {
+                                server.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
 
-                    }
+                        }
                         //out.writeUTF("echo " + str);
                     }
                 }).start();
@@ -78,6 +79,7 @@ public class ConsoleServer {
                     }
                 }
             }).start();
+
         } catch (IOException e) {
             e.printStackTrace();
             }

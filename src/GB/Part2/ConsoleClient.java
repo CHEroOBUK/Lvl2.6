@@ -13,6 +13,7 @@ public class ConsoleClient{
     final String IP_ADDRESS = "localhost";
     final int PORT = 8765;
     Scanner scanner = new Scanner(System.in);
+
     public ConsoleClient() {
         try {
             socket = new Socket(IP_ADDRESS, PORT);
