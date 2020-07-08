@@ -45,6 +45,7 @@ public class Controller implements Initializable {
                         while (true) {
                             String str = in.readUTF();
                             if (str.equalsIgnoreCase("/serverClosed")) {
+                                textArea.appendText(str  + "\n");
                                 break;
                             }
                             textArea.appendText(str  + "\n");

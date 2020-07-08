@@ -26,6 +26,7 @@ public class ClientHandler {
                             String str = in.readUTF();
                             if (str.equals("/end")) {
                                 out.writeUTF("/serverClosed");
+                                disconnect();
                                 break;
                             }
                             server.broadcastMsg(str);
@@ -57,6 +58,10 @@ public class ClientHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void disconnect(){
+        server.disconnectClient(this);
     }
 
     public void sendMsg(String msg) {
